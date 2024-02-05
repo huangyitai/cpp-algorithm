@@ -13,9 +13,11 @@ public:
         int i = l, j = r;
         int flagVal = arr[l];
         while(i < j) {
-            while(arr[j] > flagVal && i < j) 
+            // 必须要加 = 号，否则会死循环，比如：arr = {0,0,0} 
+            // 若不加 = ，此时 i 和 j 都不会移动，死循环
+            while(arr[j] >= flagVal && i < j) 
                 j--;
-            while(arr[i] < flagVal && i < j)
+            while(arr[i] <= flagVal && i < j)
                 i++;
             int tmp = arr[i];
             arr[i] = arr[j], arr[j] = tmp;
